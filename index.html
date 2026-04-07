@@ -108,6 +108,59 @@
 
 <footer>
     <p>&copy; 2026 Your Bridge to Germany | Professional Solutions</p>
+    <style>
+    .assessment-container { 
+        width: 90%; max-width: 900px; margin: 30px auto; background: #fff; 
+        padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+    }
+    .form-group { margin-bottom: 20px; text-align: left; }
+    .form-group label { display: block; font-weight: bold; margin-bottom: 8px; color: #1a1a1a; }
+    .form-group input, .form-group select, .form-group textarea { 
+        width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; 
+    }
+    .btn-submit { 
+        background: #d00; color: white; border: none; padding: 15px; 
+        font-size: 1.1rem; font-weight: bold; border-radius: 5px; cursor: pointer; width: 100%; 
+    }
+    .btn-submit:hover { background: #a00; }
+</style>
+
+<div class="assessment-container" id="assessment">
+    <h2 style="color: #d00; border-bottom: 2px solid #ffcc00; padding-bottom: 10px;">Personalized Assessment</h2>
+    <p>Complete this form to receive professional guidance. Only the administrator will see your data.</p>
+    
+    <form action="https://formspree.io/f/xbdpwgey" method="POST">
+        <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" name="name" required>
+        </div>
+        <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label>Main Goal</label>
+            <select name="goal" required>
+                <option value="work">Find a job</option>
+                <option value="study">Study in Germany</option>
+                <option value="visa">Visa/Immigration</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>German Level</label>
+            <select name="level">
+                <option value="A1-A2">Basic (A1-A2)</option>
+                <option value="B1-B2">Intermediate (B1-B2)</option>
+                <option value="C1+">Advanced (C1+)</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Message</label>
+            <textarea name="message" rows="4"></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Send Assessment</button>
+    </form>
+</div>
 </footer>
 
 </body>
