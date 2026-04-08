@@ -7,63 +7,96 @@
     <title>Your Bridge to Germany | Advisory & Languages</title>
     <style>
         :root {
-            --gold: #ffcc00;
-            --red: #d00;
+            --navy: #1a2a6c; /* Azul profesional profundo */
+            --gold: #c5a059; /* Dorado elegante, no amarillo chillón */
+            --red: #b22222;  /* Rojo bandera alemana más serio */
+            --light-bg: #f0f2f5; /* Gris muy claro para el fondo general */
+            --white: #ffffff;
         }
-        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background: #f4f4f4; color: #333; }
         
-        /* HEADER WITH PLANE BACKGROUND */
-        header { 
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('fondo.jpeg') no-repeat center center/cover;
-            color: var(--gold); 
-            padding: 8rem 1rem; 
-            text-align: center; 
-            border-bottom: 5px solid var(--red); 
+        body { 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            margin: 0; 
+            background-color: var(--light-bg); /* Fondo general gris claro para quitar el blanco total */
+            color: #2c3e50; 
+            line-height: 1.6;
         }
-        header h1 { font-size: 3.5rem; margin: 0; text-transform: uppercase; text-shadow: 2px 2px 4px rgba(0,0,0,0.6); }
-        header p { font-size: 1.5rem; font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+        
+        /* HEADER CON GRADIENTE MÁS FUERTE */
+        header { 
+            background: linear-gradient(rgba(26, 42, 108, 0.7), rgba(26, 42, 108, 0.7)), 
+                        url('fondo.jpeg') no-repeat center center/cover;
+            color: #fff; 
+            padding: 9rem 1rem; 
+            text-align: center; 
+            border-bottom: 6px solid var(--red); 
+        }
+        header h1 { font-size: 3.8rem; margin: 0; letter-spacing: 2px; text-shadow: 3px 3px 6px rgba(0,0,0,0.5); }
+        header p { font-size: 1.6rem; color: var(--gold); font-weight: 300; }
 
-        nav { background: #333; padding: 15px; text-align: center; position: sticky; top: 0; z-index: 100; }
-        nav a { color: #fff; margin: 0 15px; text-decoration: none; font-weight: bold; text-transform: uppercase; }
+        nav { background: var(--navy); padding: 18px; text-align: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        nav a { color: #fff; margin: 0 20px; text-decoration: none; font-weight: 600; text-transform: uppercase; font-size: 0.9rem; transition: 0.3s; }
         nav a:hover { color: var(--gold); }
         
-        .container { width: 90%; max-width: 900px; margin: 30px auto; background: #fff; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        h2 { color: var(--red); border-bottom: 2px solid var(--gold); padding-bottom: 10px; margin-top: 0; }
-
-        .profile-card { 
-            display: flex; align-items: center; gap: 30px; 
-            background: #fff9e6; border: 2px solid var(--gold); 
-            padding: 30px; border-radius: 15px; margin-bottom: 25px; 
+        .container { 
+            width: 92%; max-width: 1000px; margin: 40px auto; 
+            background: var(--white); padding: 50px; border-radius: 12px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
         }
-        .profile-img-container { width: 180px; height: 180px; border-radius: 50%; border: 5px solid var(--gold); overflow: hidden; flex-shrink: 0; background: #eee; }
+        
+        h2 { color: var(--navy); border-left: 5px solid var(--red); padding-left: 15px; margin-top: 0; margin-bottom: 30px; }
+
+        /* TARJETAS DE PERFIL RENOVADAS */
+        .profile-card { 
+            display: flex; align-items: center; gap: 40px; 
+            background: #fdfdfd; border: 1px solid #eee; 
+            border-left: 8px solid var(--gold); /* Acento dorado lateral */
+            padding: 35px; border-radius: 8px; margin-bottom: 30px;
+            transition: transform 0.3s;
+        }
+        .profile-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+        .profile-img-container { 
+            width: 190px; height: 190px; border-radius: 10px; /* Cuadradas con bordes redondeados se ven más modernas */
+            border: 3px solid var(--navy); overflow: hidden; flex-shrink: 0; 
+        }
         .profile-img { width: 100%; height: 100%; object-fit: cover; }
 
-        .contact-box { background: #1a1a1a; color: #fff; padding: 25px; border-radius: 8px; margin-top: 20px; }
-        .contact-box a { color: var(--gold); text-decoration: none; font-weight: bold; }
+        .profile-info h3 { color: var(--navy); font-size: 1.5rem; margin-bottom: 5px; }
+        .profile-info p { margin: 8px 0; }
 
-        ul { padding-left: 20px; }
-        li { margin-bottom: 10px; font-size: 1.1rem; }
+        /* CONTACTO Y SERVICIOS */
+        .contact-box { background: var(--navy); color: #fff; padding: 35px; border-radius: 12px; margin-top: 30px; text-align: center; }
+        .contact-box a { color: var(--gold); font-size: 1.3rem; text-decoration: none; border: 1px solid var(--gold); padding: 10px 20px; border-radius: 5px; display: inline-block; margin-top: 15px; transition: 0.3s; }
+        .contact-box a:hover { background: var(--gold); color: var(--navy); }
 
-        /* ASSESSMENT FORM STYLES */
+        ul { list-style: none; padding: 0; }
+        li { margin-bottom: 15px; padding-left: 30px; position: relative; font-size: 1.1rem; }
+        li::before { content: "✓"; position: absolute; left: 0; color: var(--red); font-weight: bold; }
+
+        /* FORMULARIO PROFESIONAL */
         .assessment-container { 
-            width: 90%; max-width: 900px; margin: 30px auto; background: #fff; 
-            padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+            background: #ffffff; padding: 50px; border-radius: 15px; border-top: 10px solid var(--navy);
+            margin-top: 50px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); 
         }
-        .form-group { margin-bottom: 20px; text-align: left; }
-        .form-group label { display: block; font-weight: bold; margin-bottom: 8px; color: #1a1a1a; }
+        .form-group label { color: var(--navy); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; }
         .form-group input, .form-group select, .form-group textarea { 
-            width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; 
+            background: #f9f9f9; border: 1px solid #ddd; padding: 14px; transition: 0.3s;
         }
+        .form-group input:focus { border-color: var(--navy); background: #fff; outline: none; }
+
         .btn-submit { 
-            background: #d00; color: white; border: none; padding: 15px; 
-            font-size: 1.1rem; font-weight: bold; border-radius: 5px; cursor: pointer; width: 100%; 
+            background: var(--navy); color: white; border: none; padding: 18px; 
+            font-size: 1.2rem; border-radius: 5px; transition: 0.4s;
         }
-        .btn-submit:hover { background: #a00; }
+        .btn-submit:hover { background: var(--red); cursor: pointer; }
+
+        footer { background: #222; color: #ccc; text-align: center; padding: 40px 0; margin-top: 50px; }
 
         @media (max-width: 768px) {
-            header h1 { font-size: 2.2rem; }
-            .profile-card { flex-direction: column; text-align: center; }
+            header h1 { font-size: 2.5rem; }
+            .profile-card { flex-direction: column; text-align: center; padding: 20px; }
+            .container { padding: 20px; }
         }
     </style>
 </head>
@@ -71,26 +104,27 @@
 
 <header>
     <h1>YOUR BRIDGE TO GERMANY</h1>
-    <p>Professional Advisory for your journey to Germany</p>
+    <p>Excellence in International Relocation & Language Training</p>
 </header>
 
 <nav>
-    <a href="#welcome">Welcome</a>
+    <a href="#welcome">The Team</a>
     <a href="#services">Advisory</a>
     <a href="#languages">Languages</a>
     <a href="#contact">Contact</a>
 </nav>
 
 <div class="container" id="welcome">
-    <h2>Welcome</h2>
+    <h2>Welcome to Your Future</h2>
+    
     <div class="profile-card">
         <div class="profile-img-container">
             <img src="marcia.jpeg" alt="Marcia Fernández Alvarado" class="profile-img">
         </div>
         <div class="profile-info">
-            <h3 style="margin: 0;">Marcia Fiorella Fernández Alvarado</h3>
-            <p><strong>Psychologist & Human Resources Specialist</strong></p>
-            <p>Expert in recruitment and integration, ensuring your journey to Germany is successful and professionally guided.</p>
+            <h3>Marcia Fiorella Fernández Alvarado</h3>
+            <p style="color: var(--red);"><strong>Psychologist & Human Resources Specialist</strong></p>
+            <p>Expert in recruitment and integration, ensuring your journey to Germany is successful and professionally guided with a human touch.</p>
         </div>
     </div>
 
@@ -99,48 +133,50 @@
             <img src="valeria.jpeg" alt="Valeria Guzman" class="profile-img">
         </div>
         <div class="profile-info">
-            <h3 style="margin: 0;">Valeria Guzman</h3>
-            <p><strong>Language Specialist & Academic Advisor</strong></p>
-            <p>Valeria is an expert in advanced linguistic preparation, essential for successful academic and professional integration in Germany:</p>
-            <ul style="margin: 10px 0; padding-left: 20px; list-style-type: none;">
-                <li>🏅 <strong>FCE (Cambridge English First):</strong> Certifies an upper-intermediate level of English required for fluent communication in professional environments.</li>
-                <li>🎓 <strong>CAE (Advanced English):</strong> Demonstrates an advanced level of English for demanding academic and professional contexts.</li>
-                <li>🇩🇪 <strong>DSH:</strong> The mandatory German language examination required for international students to access higher education in Germany.</li>
+            <h3>Valeria Guzman</h3>
+            <p style="color: var(--red);"><strong>Language Specialist & Academic Advisor</strong></p>
+            <p>Expert in advanced linguistic preparation, essential for successful academic and professional integration in Germany:</p>
+            <ul>
+                <li><strong>FCE (Cambridge English First):</strong> Fluent communication in professional environments.</li>
+                <li><strong>CAE (Advanced English):</strong> High-level academic and professional English.</li>
+                <li><strong>DSH:</strong> Mandatory German examination for higher education access.</li>
             </ul>
         </div>
     </div>
-    <p>At <strong>Your Bridge to Germany</strong>, we build your future with expert advice and psychological support for your relocation.</p>
+    
+    <p style="text-align: center; font-style: italic; color: #666; margin-top: 30px;">
+        "We don't just process papers; we build your bridge to a new life in Germany."
+    </p>
 </div>
 
 <div class="container" id="services">
-    <h2>Professional Services</h2>
+    <h2>Strategic Advisory</h2>
     <ul>
-        <li><strong>Immigration Strategy:</strong> Visa guidance and legal requirements for Germany.</li>
-        <li><strong>HR Consulting:</strong> CV adaptation (Lebenslauf) and interview preparation.</li>
-        <li><strong>Relocation:</strong> Housing assistance and city registration (Anmeldung).</li>
+        <li><strong>Immigration Strategy:</strong> Tailored visa guidance and legal compliance.</li>
+        <li><strong>HR Consulting:</strong> German-style CV (Lebenslauf) and interview simulation.</li>
+        <li><strong>Relocation:</strong> Real estate assistance and city registration (Anmeldung).</li>
     </ul>
 </div>
 
 <div class="container" id="languages">
-    <h2>Languages</h2>
+    <h2>Language Excellence</h2>
     <ul>
-        <li><strong>German:</strong> Intensive courses for all levels (A1-C1).</li>
-        <li><strong>English & Spanish:</strong> Support for international professionals and students.</li>
+        <li><strong>German:</strong> Specialized training from A1 to C1 levels.</li>
+        <li><strong>English & Spanish:</strong> Support for international professionals.</li>
     </ul>
 </div>
 
 <div class="container" id="contact">
-    <h2>Contact Information</h2>
+    <h2>Get in Touch</h2>
     <div class="contact-box">
+        <p>Ready to start your journey? Contact us via WhatsApp or Email.</p>
         <p><strong>WhatsApp:</strong> <a href="https://wa.me/4917662326884">+49 176 62326884</a></p>
         <p><strong>Email:</strong> luiscastillo23200910@gmail.com</p>
     </div>
-</div>
 
-<footer>
     <div class="assessment-container" id="assessment">
-        <h2 style="color: #d00; border-bottom: 2px solid #ffcc00; padding-bottom: 10px;">Personalized Assessment</h2>
-        <p>Complete this form to receive professional guidance adapted to your profile.</p>
+        <h2 style="border: none; text-align: center;">Start Your Assessment</h2>
+        <p style="text-align: center; margin-bottom: 30px;">Complete this form and our experts will contact you shortly.</p>
         
         <form action="https://formspree.io/f/xbdpwgey" method="POST">
             <div class="form-group">
@@ -152,17 +188,8 @@
                 <input type="email" name="email" required placeholder="email@example.com">
             </div>
             <div class="form-group">
-                <label>Professional Area / Occupation</label>
+                <label>Professional Area</label>
                 <input type="text" name="profession" required placeholder="e.g., Nursing, IT, Engineering...">
-            </div>
-            <div class="form-group">
-                <label>Years of Work Experience</label>
-                <select name="experience" required>
-                    <option value="none">No experience</option>
-                    <option value="1-3">1 to 3 years</option>
-                    <option value="3-5">3 to 5 years</option>
-                    <option value="5+">More than 5 years</option>
-                </select>
             </div>
             <div class="form-group">
                 <label>Do you have a European Passport?</label>
@@ -173,7 +200,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label>Main Goal in Germany</label>
+                <label>Goal in Germany</label>
                 <select name="goal" required>
                     <option value="work">Find a Professional Job</option>
                     <option value="study">University / Masters Degree</option>
@@ -182,22 +209,17 @@
                 </select>
             </div>
             <div class="form-group">
-                <label>Current German Language Level</label>
-                <select name="level">
-                    <option value="none">Beginner (A1)</option>
-                    <option value="basic">Basic (A2)</option>
-                    <option value="intermediate">Intermediate (B1/B2)</option>
-                    <option value="advanced">Advanced (C1+)</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Additional Information</label>
+                <label>Message</label>
                 <textarea name="message" rows="4" placeholder="Tell us more about your case..."></textarea>
             </div>
-            <button type="submit" class="btn-submit">Start Assessment Process</button>
+            <button type="submit" class="btn-submit">SUBMIT MY CASE</button>
         </form>
     </div>
-    <p style="text-align: center; padding: 20px;">&copy; 2026 Your Bridge to Germany | Professional Solutions</p>
+</div>
+
+<footer>
+    <p>&copy; 2026 Your Bridge to Germany | Excellence in Relocation</p>
+    <p style="font-size: 0.8rem; opacity: 0.6;">Trujillo, Peru | Germany</p>
 </footer>
 
 </body>
