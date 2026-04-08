@@ -78,6 +78,21 @@
             <p>Expert in recruitment and integration, ensuring your journey to Germany is successful and professionally guided.</p>
         </div>
     </div>
+    <div class="profile-card">
+        <div class="profile-img-container">
+            <img src="valeria.jpeg" alt="Valeria Guzman" class="profile-img">
+        </div>
+        <div class="profile-info">
+            <h3 style="margin: 0;">Valeria Guzman</h3>
+            <p><strong>Language Specialist & Academic Advisor</strong></p>
+            <p>Valeria es experta en preparación lingüística avanzada, esencial para la integración académica y profesional en Alemania:</p>
+            <ul style="margin: 10px 0; padding-left: 20px; list-style-type: none;">
+                <li>🏅 <strong>FCE (Cambridge English First):</strong> Certifica un nivel de inglés intermedio-alto necesario para la comunicación fluida en el trabajo.</li>
+                <li>🎓 <strong>CAE (Advanced English):</strong> Demuestra un nivel de inglés avanzado para contextos académicos y profesionales exigentes.</li>
+                <li>🇩🇪 <strong>DSH:</strong> Es el examen de idioma alemán obligatorio para que los estudiantes extranjeros puedan acceder a estudios superiores en Alemania.</li>
+            </ul>
+        </div>
+    </div>
     <p>At <strong>Your Bridge to Germany</strong>, we build your future with expert advice and psychological support for your relocation.</p>
 </div>
 
@@ -127,38 +142,68 @@
 
 <div class="assessment-container" id="assessment">
     <h2 style="color: #d00; border-bottom: 2px solid #ffcc00; padding-bottom: 10px;">Personalized Assessment</h2>
-    <p>Complete this form to receive professional guidance. Only the administrator will see your data.</p>
+    <p>Complete este formulario para recibir una asesoría adaptada a su perfil profesional y migratorio.</p>
     
     <form action="https://formspree.io/f/xbdpwgey" method="POST">
         <div class="form-group">
             <label>Full Name</label>
-            <input type="text" name="name" required>
+            <input type="text" name="name" required placeholder="Ej: Juan Pérez">
         </div>
         <div class="form-group">
             <label>Email Address</label>
-            <input type="email" name="email" required>
+            <input type="email" name="email" required placeholder="correo@ejemplo.com">
         </div>
+
         <div class="form-group">
-            <label>Main Goal</label>
+            <label>Professional Area / Occupation</label>
+            <input type="text" name="profession" required placeholder="Ej: Enfermería, IT, Ingeniería...">
+        </div>
+
+        <div class="form-group">
+            <label>Years of Work Experience</label>
+            <select name="experience" required>
+                <option value="none">No experience</option>
+                <option value="1-3">1 to 3 years</option>
+                <option value="3-5">3 to 5 years</option>
+                <option value="5+">More than 5 years</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Do you have a European Passport?</label>
+            <select name="eu_passport" required>
+                <option value="no">No, I need a Visa</option>
+                <option value="yes">Yes, I am an EU Citizen</option>
+                <option value="in_process">I am currently processing it</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Main Goal in Germany</label>
             <select name="goal" required>
-                <option value="work">Find a job</option>
-                <option value="study">Study in Germany</option>
-                <option value="visa">Visa/Immigration</option>
+                <option value="work">Find a Professional Job</option>
+                <option value="study">University / Masters Degree</option>
+                <option value="aupair">Au Pair / FSJ Programs</option>
+                <option value="visa">General Immigration</option>
             </select>
         </div>
+
         <div class="form-group">
-            <label>German Level</label>
+            <label>Current German Language Level</label>
             <select name="level">
-                <option value="A1-A2">Basic (A1-A2)</option>
-                <option value="B1-B2">Intermediate (B1-B2)</option>
-                <option value="C1+">Advanced (C1+)</option>
+                <option value="none">Beginner (A1)</option>
+                <option value="basic">Basic (A2)</option>
+                <option value="intermediate">Intermediate (B1/B2)</option>
+                <option value="advanced">Advanced (C1+)</option>
             </select>
         </div>
+
         <div class="form-group">
-            <label>Message</label>
-            <textarea name="message" rows="4"></textarea>
+            <label>Additional Information</label>
+            <textarea name="message" rows="4" placeholder="Cuéntenos más sobre su caso..."></textarea>
         </div>
-        <button type="submit" class="btn-submit">Send Assessment</button>
+
+        <button type="submit" class="btn-submit">Start Assessment Process</button>
     </form>
 </div>
 </footer>
