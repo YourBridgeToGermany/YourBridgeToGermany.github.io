@@ -92,36 +92,10 @@
             padding: 8rem 1rem; 
             text-align: center; 
             border-bottom: 5px solid var(--red); 
-            overflow: hidden;
-        }
-        header h1 { position: relative; z-index: 10; font-size: 3.5rem; margin: 0; text-transform: uppercase; text-shadow: 2px 2px 4px rgba(0,0,0,0.6); }
-        header p { position: relative; z-index: 10; font-size: 1.5rem; color: var(--gold); font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
-
-        /* ESTILO DEL AVIÓN ANIMADO */
-        #airplane {
-            position: absolute;
-            width: 450px; /* Tamaño aproximado basado en tu captura */
-            z-index: 5;
-            top: 10%;
-            left: 5%;
-            opacity: 0;
-            transform: translate(-150%, 50%) scale(0.5) rotate(10deg);
         }
 
-        .plane-flying {
-            animation: flyIn 2.5s cubic-bezier(0.2, 0.6, 0.3, 1) forwards;
-        }
-
-        @keyframes flyIn {
-            0% {
-                opacity: 0;
-                transform: translate(-150%, 50%) scale(0.5) rotate(10deg);
-            }
-            100% {
-                opacity: 1;
-                transform: translate(0, 0) scale(1) rotate(0deg);
-            }
-        }
+        header h1 { font-size: 3.5rem; margin: 0; text-transform: uppercase; text-shadow: 2px 2px 4px rgba(0,0,0,0.6); }
+        header p { font-size: 1.5rem; color: var(--gold); font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
 
         nav { background: #333; padding: 15px; text-align: center; position: sticky; top: 0; z-index: 100; }
         nav a { color: #fff; margin: 0 15px; text-decoration: none; font-weight: bold; text-transform: uppercase; transition: 0.3s; }
@@ -180,7 +154,6 @@
             #hero-screen h1 { font-size: 2.5rem; }
             header h1 { font-size: 2.2rem; }
             .profile-card { flex-direction: column; text-align: center; }
-            #airplane { width: 250px; }
         }
     </style>
 </head>
@@ -194,8 +167,6 @@
 
 <div id="main-content">
     <header>
-        <img src="image_cc8bbc.png" id="airplane" alt="Airplane">
-        
         <h1>YOUR BRIDGE TO GERMANY</h1>
         <p>Professional Advisory for your journey to Germany</p>
     </header>
@@ -217,7 +188,7 @@
             <div class="profile-info">
                 <h3>Marcia Fiorella Fernández Alvarado</h3>
                 <p><strong>Psychologist & Human Resources Specialist</strong></p>
-                <p>As a seasoned Psychologist and HR Specialist, Marcia provides the emotional and structural foundation for your relocation. She specializes in <strong>cross-cultural adaptation</strong>, helping you navigate the psychological challenges of moving abroad. Her expertise in <strong>Recruitment and Human Resources</strong> ensures that your professional profile is perfectly aligned with German market standards, from behavioral coaching to talent integration strategies. Marcia focuses on the "human side" of migration, offering support for stress management and professional growth during your transition.</p>
+                <p>As a seasoned Psychologist and HR Specialist, Marcia provides the emotional and structural foundation for your relocation. She specializes in <strong>cross-cultural adaptation</strong>, helping you navigate the psychological challenges of moving abroad. Her expertise in <strong>Recruitment and Human Resources</strong> ensures that your professional profile is perfectly aligned with German market standards.</p>
             </div>
         </div>
 
@@ -236,24 +207,14 @@
                 </ul>
             </div>
         </div>
-        <p data-aos="fade-in">At <strong>Your Bridge to Germany</strong>, we build your future with expert advice and psychological support for your relocation.</p>
     </div>
 
     <div class="container" id="services">
         <h2 data-aos="fade-right">Strategic Advisory</h2>
         <ul>
-            <li data-aos="fade-left" data-aos-delay="100"><strong>Immigration Strategy:</strong> We provide comprehensive guidance on all visa categories, including Work, Study, and Job Seeker visas. Our team analyzes your academic background and professional experience to ensure full legal compliance with the latest German immigration regulations.</li>
-            <li data-aos="fade-left" data-aos-delay="200"><strong>HR Consulting:</strong> We offer a complete optimization of your professional documents. This includes transforming your CV into a traditional German-style "Lebenslauf" and providing intensive one-on-one interview simulations to master the nuances of German business etiquette and corporate culture.</li>
-            <li data-aos="fade-left" data-aos-delay="300"><strong>Relocation & Logistics:</strong> Practical support for your first steps in the country. We assist with the mandatory city registration (Anmeldung), setting up health insurance, opening bank accounts, and providing guidance to navigate the competitive German housing market.</li>
-        </ul>
-    </div>
-
-    <div class="container" id="languages">
-        <h2 data-aos="fade-right">Language Excellence</h2>
-        <ul>
-            <li data-aos="fade-up" data-aos-delay="100"><strong>Intensive German Courses:</strong> Structured training from A1 (Beginner) to C1 (Advanced) levels. We offer specialized preparation for the "B2/C1 Pflege" exam for healthcare professionals and the "TestDaf/DSH" for university applicants.</li>
-            <li data-aos="fade-up" data-aos-delay="200"><strong>Business English:</strong> Tailored modules for professionals aiming to work in international environments within Germany. We focus on corporate communication, technical vocabulary, and professional presentation skills.</li>
-            <li data-aos="fade-up" data-aos-delay="300"><strong>Spanish & Support:</strong> Specialized linguistic support for Spanish-speaking professionals and students. We provide bridging services to help international talents integrate smoothly into their new linguistic environment.</li>
+            <li data-aos="fade-left"><strong>Immigration Strategy:</strong> Guidance on Work, Study, and Job Seeker visas.</li>
+            <li data-aos="fade-left"><strong>HR Consulting:</strong> CV optimization (Lebenslauf) and interview simulation.</li>
+            <li data-aos="fade-left"><strong>Relocation & Logistics:</strong> Support for registration (Anmeldung), insurance, and banking.</li>
         </ul>
     </div>
 
@@ -266,7 +227,6 @@
 
         <div class="assessment-container" id="assessment" data-aos="fade-up">
             <h2>Personalized Assessment</h2>
-            <p>Complete this form to receive professional guidance adapted to your profile.</p>
             <form action="https://formspree.io/f/xbdpwgey" method="POST">
                 <div class="form-group">
                     <label>Full Name</label>
@@ -281,43 +241,12 @@
                     <input type="text" name="profession" required placeholder="e.g., Nursing, IT, Engineering...">
                 </div>
                 <div class="form-group">
-                    <label>Years of Work Experience</label>
-                    <select name="experience" required>
-                        <option value="none">No experience</option>
-                        <option value="1-3">1 to 3 years</option>
-                        <option value="3-5">3 to 5 years</option>
-                        <option value="5+">More than 5 years</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Do you have a European Passport?</label>
-                    <select name="eu_passport" required>
-                        <option value="no">No, I need a Visa</option>
-                        <option value="yes">Yes, I am an EU Citizen</option>
-                        <option value="in_process">I am currently processing it</option>
-                    </select>
-                </div>
-                <div class="form-group">
                     <label>Main Goal in Germany</label>
                     <select name="goal" required>
                         <option value="work">Find a Professional Job</option>
                         <option value="study">University / Masters Degree</option>
-                        <option value="aupair">Au Pair / FSJ Programs</option>
                         <option value="visa">General Immigration</option>
                     </select>
-                </div>
-                <div class="form-group">
-                    <label>Current German Language Level</label>
-                    <select name="level">
-                        <option value="none">Beginner (A1)</option>
-                        <option value="basic">Basic (A2)</option>
-                        <option value="intermediate">Intermediate (B1/B2)</option>
-                        <option value="advanced">Advanced (C1+)</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Additional Information</label>
-                    <textarea name="message" rows="4" placeholder="Tell us more about your case..."></textarea>
                 </div>
                 <button type="submit" class="btn-submit">SUBMIT MY CASE</button>
             </form>
@@ -337,19 +266,15 @@
         // Desplazar hero-screen hacia arriba
         document.getElementById('hero-screen').style.transform = 'translateY(-100%)';
         
-        // Mostrar contenido
+        // Mostrar contenido principal
         document.getElementById('main-content').style.opacity = '1';
         document.body.style.overflowY = 'auto';
 
-        // Disparar animación del avión
-        const plane = document.getElementById('airplane');
-        setTimeout(() => {
-            plane.classList.add('plane-flying');
-        }, 500);
-
+        // Actualizar animaciones AOS al mostrar el contenido
         setTimeout(() => { AOS.refresh(); }, 600);
     }
 
+    // Bloquear scroll inicial
     document.body.style.overflowY = 'hidden';
 </script>
 
