@@ -71,11 +71,31 @@
             text-transform: uppercase;
             transition: 0.3s;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 2100;
         }
 
         .btn-start:hover {
             background: #a00;
             transform: scale(1.05);
+        }
+
+        /* ESTILOS DEL AVIÓN */
+        #avion-animado {
+            position: absolute;
+            width: 180px;
+            z-index: 2050;
+            pointer-events: none;
+            transition: all 0.5s ease;
+        }
+
+        @keyframes flyAway {
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
+            30% { transform: translate(300px, -150px) rotate(-15deg) scale(1.2); }
+            100% { transform: translate(2000px, -800px) rotate(-25deg) scale(0.5); opacity: 0; }
+        }
+
+        .despegar {
+            animation: flyAway 2s forwards cubic-bezier(0.45, 0.05, 0.55, 0.95);
         }
 
         /* CONTENIDO PRINCIPAL */
@@ -154,6 +174,7 @@
             #hero-screen h1 { font-size: 2.5rem; }
             header h1 { font-size: 2.2rem; }
             .profile-card { flex-direction: column; text-align: center; }
+            #avion-animado { width: 120px; }
         }
     </style>
 </head>
@@ -162,6 +183,7 @@
 <div id="hero-screen">
     <h1 data-aos="zoom-in">YOUR BRIDGE TO GERMANY</h1>
     <p data-aos="fade-up" data-aos-delay="400">Your journey to a professional future starts here.</p>
+    <img src="avion.jpeg" id="avion-animado" alt="Avión">
     <button class="btn-start" onclick="startExperience()" data-aos="fade-up" data-aos-delay="800">Empezar</button>
 </div>
 
@@ -263,15 +285,21 @@
     AOS.init({ duration: 1000, once: true });
 
     function startExperience() {
-        // Desplazar hero-screen hacia arriba
-        document.getElementById('hero-screen').style.transform = 'translateY(-100%)';
+        const avion = document.getElementById('avion-animado');
         
-        // Mostrar contenido principal
-        document.getElementById('main-content').style.opacity = '1';
-        document.body.style.overflowY = 'auto';
+        // El avión despega
+        avion.classList.add('despegar');
 
-        // Actualizar animaciones AOS al mostrar el contenido
-        setTimeout(() => { AOS.refresh(); }, 600);
+        // Después de un breve momento, sube la pantalla
+        setTimeout(() => {
+            document.getElementById('hero-screen').style.transform = 'translateY(-100%)';
+            document.getElementById('main-content').style.opacity = '1';
+            document.body.style.overflowY = 'auto';
+            
+            setTimeout(() => { 
+                AOS.refresh(); 
+            }, 600);
+        }, 600); 
     }
 
     // Bloquear scroll inicial
