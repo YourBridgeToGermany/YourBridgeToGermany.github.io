@@ -32,8 +32,9 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('fondo.jpeg') no-repeat center center/cover;
+            /* 1. CAMBIO DE FONDO: Ahora usa fondosinnd.jpeg */
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('fondosinnd.jpeg') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -41,14 +42,18 @@
             z-index: 2000;
             text-align: center;
             transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+            overflow: hidden; /* Para que el avión no se salga de la pantalla al volar */
         }
 
+        /* 3. CAPAS DE TEXTO DELANTE: Aumentamos el z-index de los textos y botón */
         #hero-screen h1 { 
             color: var(--white); 
             font-size: 4rem; 
             margin: 0; 
             text-transform: uppercase; 
             text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+            position: relative;
+            z-index: 2100; /* Delante del avión */
         }
 
         #hero-screen p { 
@@ -57,6 +62,8 @@
             font-weight: bold; 
             margin: 20px 0 40px;
             text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 2100; /* Delante del avión */
         }
 
         .btn-start {
@@ -71,34 +78,45 @@
             text-transform: uppercase;
             transition: 0.3s;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            z-index: 2100;
+            position: relative;
+            z-index: 2100; /* Delante del avión */
         }
 
         .btn-start:hover {
             background: #a00;
-            transform: scale(1.05);
+            transform: scale(1.05) translateY(-5px);
         }
 
-        /* ESTILOS DEL AVIÓN */
+        /* 2 y 3. ESTILOS DEL AVIÓN GRANDE DETRÁS */
         #avion-animado {
             position: absolute;
-            width: 180px;
-            z-index: 2050;
-            pointer-events: none;
-            transition: all 0.5s ease;
+            /* Lo hacemos grande y lo posicionamos similar al original */
+            width: 80%; 
+            max-width: 1000px;
+            top: 10%;
+            left: -10%;
+            
+            /* CAPAS: Detrás de los textos pero delante del fondo */
+            z-index: 2050; 
+            
+            /* SOLUCIÓN AL RECUADRO: Intenta quitar el fondo cuadriculado si es claro */
+            mix-blend-mode: multiply; 
+            opacity: 0.8; /* Un poco transparente para integrarlo mejor */
+            
+            pointer-events: none; /* Que no interrumpa los clics */
         }
 
+        /* Animación de despegue (hacia la derecha y arriba) */
         @keyframes flyAway {
-            0% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
-            30% { transform: translate(300px, -150px) rotate(-15deg) scale(1.2); }
-            100% { transform: translate(2000px, -800px) rotate(-25deg) scale(0.5); opacity: 0; }
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 0.8; }
+            100% { transform: translate(1500px, -500px) rotate(-15deg) scale(0.6); opacity: 0; }
         }
 
         .despegar {
-            animation: flyAway 2s forwards cubic-bezier(0.45, 0.05, 0.55, 0.95);
+            animation: flyAway 2.5s forwards cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* CONTENIDO PRINCIPAL */
+        /* CONTENIDO PRINCIPAL (Sin cambios) */
         #main-content {
             opacity: 0;
             transition: opacity 1s ease-in;
@@ -106,8 +124,9 @@
 
         header { 
             position: relative;
+            /* Mantenemos fondo.jpeg original aquí o fondosinnd si prefieres */
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('fondo.jpeg') no-repeat center center/cover;
+                        url('fondosinnd.jpeg') no-repeat center center/cover;
             color: var(--white); 
             padding: 8rem 1rem; 
             text-align: center; 
@@ -174,16 +193,18 @@
             #hero-screen h1 { font-size: 2.5rem; }
             header h1 { font-size: 2.2rem; }
             .profile-card { flex-direction: column; text-align: center; }
-            #avion-animado { width: 120px; }
+            /* Ajuste de avión en móvil */
+            #avion-animado { width: 120%; top: 15%; left: -20%; }
         }
     </style>
 </head>
 <body>
 
 <div id="hero-screen">
+    <img src="avion.jpeg" id="avion-animado" alt="Avión">
+
     <h1 data-aos="zoom-in">YOUR BRIDGE TO GERMANY</h1>
     <p data-aos="fade-up" data-aos-delay="400">Your journey to a professional future starts here.</p>
-    <img src="avion.jpeg" id="avion-animado" alt="Avión">
     <button class="btn-start" onclick="startExperience()" data-aos="fade-up" data-aos-delay="800">Empezar</button>
 </div>
 
@@ -290,7 +311,7 @@
         // El avión despega
         avion.classList.add('despegar');
 
-        // Después de un breve momento, sube la pantalla
+        // Esperamos un momento a que el avión avance antes de subir la pantalla
         setTimeout(() => {
             document.getElementById('hero-screen').style.transform = 'translateY(-100%)';
             document.getElementById('main-content').style.opacity = '1';
@@ -299,7 +320,7 @@
             setTimeout(() => { 
                 AOS.refresh(); 
             }, 600);
-        }, 600); 
+        }, 1000); // 1 segundo de retraso para el despegue
     }
 
     // Bloquear scroll inicial
