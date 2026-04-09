@@ -32,7 +32,6 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            /* USAMOS EL CASTILLO SOLO COMO FONDO REAL */
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
                         url('fondosinnd.jpeg') no-repeat center center/cover;
             display: flex;
@@ -42,10 +41,9 @@
             z-index: 2000;
             text-align: center;
             transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
-            overflow: hidden; /* Importante para que el avión no se salga */
+            overflow: hidden;
         }
 
-        /* TEXTOS DELANTE: z-index alto */
         #hero-screen h1 { 
             color: var(--white); 
             font-size: 4rem; 
@@ -87,26 +85,18 @@
             transform: scale(1.05) translateY(-5px);
         }
 
-        /* EL AVIÓN: Posicionado para replicar el fondo original */
         #avion-animado {
             position: absolute;
-            /* Lo hacemos grande y lo posicionamos a la izquierda y arriba */
             width: 80%; 
             max-width: 1000px;
             top: 10%;
             left: -10%;
-            
-            /* Detrás de los textos pero delante del fondo del castillo */
             z-index: 2050; 
-            
-            /* Solución al recuadro si la imagen tiene fondo claro */
             mix-blend-mode: multiply; 
-            opacity: 0.8; /* Integración mejorada */
-            
-            pointer-events: none; /* Que no interrumpa clics */
+            opacity: 0.8; 
+            pointer-events: none;
         }
 
-        /* Animación de despegue (hacia la derecha y arriba) */
         @keyframes flyAway {
             0% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 0.8; }
             100% { transform: translate(1500px, -500px) rotate(-15deg) scale(0.6); opacity: 0; }
@@ -116,7 +106,6 @@
             animation: flyAway 2.5s forwards cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* CONTENIDO PRINCIPAL (Sin cambios) */
         #main-content {
             opacity: 0;
             transition: opacity 1s ease-in;
@@ -124,7 +113,6 @@
 
         header { 
             position: relative;
-            /* Aquí seguimos usando fondosinnd.jpeg, o la imagen que prefieras */
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
                         url('fondosinnd.jpeg') no-repeat center center/cover;
             color: var(--white); 
@@ -164,6 +152,7 @@
         .profile-info p { margin: 10px 0; line-height: 1.6; }
 
         .contact-box { background: #1a1a1a; color: #fff; padding: 25px; border-radius: 8px; margin-top: 20px; }
+        .contact-box p { margin: 10px 0; }
         .contact-box a { color: var(--gold); text-decoration: none; font-weight: bold; }
 
         ul { padding-left: 20px; }
@@ -193,7 +182,6 @@
             #hero-screen h1 { font-size: 2.5rem; }
             header h1 { font-size: 2.2rem; }
             .profile-card { flex-direction: column; text-align: center; }
-            /* Ajuste de avión en móvil */
             #avion-animado { width: 120%; top: 15%; left: -20%; }
         }
     </style>
@@ -202,10 +190,9 @@
 
 <div id="hero-screen">
     <img src="avion.jpeg" id="avion-animado" alt="Avión">
-
     <h1 data-aos="zoom-in">YOUR BRIDGE TO GERMANY</h1>
     <p data-aos="fade-up" data-aos-delay="400">Your journey to a professional future starts here.</p>
-    <button class="btn-start" onclick="startExperience()" data-aos="fade-up" data-aos-delay="800">Empezar</button>
+    <button class="btn-start" onclick="startExperience()" data-aos="fade-up" data-aos-delay="800">START</button>
 </div>
 
 <div id="main-content">
@@ -261,11 +248,23 @@
         </ul>
     </div>
 
+    <div class="container" id="languages">
+        <h2 data-aos="fade-right">Language Courses</h2>
+        <div data-aos="fade-up">
+            <h3>English Courses</h3>
+            <p>Our English programs are designed to take your communication skills to a global professional level. We focus on Cambridge certification preparation (FCE, CAE) and Business English, ensuring you can lead meetings, draft reports, and network effectively in any international environment.</p>
+            
+            <h3>German Courses</h3>
+            <p>Mastering the local language is the key to success in Germany. We offer intensive training ranging from basic A1 to advanced academic levels (DSH/TestDaF). Our methodology combines grammar precision with practical conversation, specifically tailored for professionals and students planning their relocation.</p>
+        </div>
+    </div>
+
     <div class="container" id="contact">
         <h2 data-aos="fade-right">Contact Information</h2>
         <div class="contact-box" data-aos="zoom-in">
             <p><strong>WhatsApp:</strong> <a href="https://wa.me/4917662326884">+49 176 62326884</a></p>
-            <p><strong>Email:</strong> luiscastillo23200910@gmail.com</p>
+            <p><strong>Marcia Fernández Alvarado:</strong> <a href="mailto:Marcia_lucas@icloud.com">Marcia_lucas@icloud.com</a></p>
+            <p><strong>Valeria Guzman:</strong> <a href="mailto:valeriagp61@gmail.com">valeriagp61@gmail.com</a></p>
         </div>
 
         <div class="assessment-container" id="assessment" data-aos="fade-up">
@@ -289,6 +288,7 @@
                         <option value="work">Find a Professional Job</option>
                         <option value="study">University / Masters Degree</option>
                         <option value="visa">General Immigration</option>
+                        <option value="languages">Language Courses (English/German)</option>
                     </select>
                 </div>
                 <button type="submit" class="btn-submit">SUBMIT MY CASE</button>
@@ -307,11 +307,8 @@
 
     function startExperience() {
         const avion = document.getElementById('avion-animado');
-        
-        // El avión despega
         avion.classList.add('despegar');
 
-        // Esperamos un momento a que el avión avance antes de subir la pantalla
         setTimeout(() => {
             document.getElementById('hero-screen').style.transform = 'translateY(-100%)';
             document.getElementById('main-content').style.opacity = '1';
@@ -320,10 +317,9 @@
             setTimeout(() => { 
                 AOS.refresh(); 
             }, 600);
-        }, 1000); // 1 segundo de retraso para el despegue
+        }, 1000);
     }
 
-    // Bloquear scroll inicial
     document.body.style.overflowY = 'hidden';
 </script>
 
