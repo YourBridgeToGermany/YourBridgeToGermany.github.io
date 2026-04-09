@@ -32,7 +32,7 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            /* 1. CAMBIO DE FONDO: Ahora usa fondosinnd.jpeg */
+            /* USAMOS EL CASTILLO SOLO COMO FONDO REAL */
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
                         url('fondosinnd.jpeg') no-repeat center center/cover;
             display: flex;
@@ -42,10 +42,10 @@
             z-index: 2000;
             text-align: center;
             transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
-            overflow: hidden; /* Para que el avión no se salga de la pantalla al volar */
+            overflow: hidden; /* Importante para que el avión no se salga */
         }
 
-        /* 3. CAPAS DE TEXTO DELANTE: Aumentamos el z-index de los textos y botón */
+        /* TEXTOS DELANTE: z-index alto */
         #hero-screen h1 { 
             color: var(--white); 
             font-size: 4rem; 
@@ -53,7 +53,7 @@
             text-transform: uppercase; 
             text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
             position: relative;
-            z-index: 2100; /* Delante del avión */
+            z-index: 2100;
         }
 
         #hero-screen p { 
@@ -63,7 +63,7 @@
             margin: 20px 0 40px;
             text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
             position: relative;
-            z-index: 2100; /* Delante del avión */
+            z-index: 2100;
         }
 
         .btn-start {
@@ -79,7 +79,7 @@
             transition: 0.3s;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             position: relative;
-            z-index: 2100; /* Delante del avión */
+            z-index: 2100;
         }
 
         .btn-start:hover {
@@ -87,23 +87,23 @@
             transform: scale(1.05) translateY(-5px);
         }
 
-        /* 2 y 3. ESTILOS DEL AVIÓN GRANDE DETRÁS */
+        /* EL AVIÓN: Posicionado para replicar el fondo original */
         #avion-animado {
             position: absolute;
-            /* Lo hacemos grande y lo posicionamos similar al original */
+            /* Lo hacemos grande y lo posicionamos a la izquierda y arriba */
             width: 80%; 
             max-width: 1000px;
             top: 10%;
             left: -10%;
             
-            /* CAPAS: Detrás de los textos pero delante del fondo */
+            /* Detrás de los textos pero delante del fondo del castillo */
             z-index: 2050; 
             
-            /* SOLUCIÓN AL RECUADRO: Intenta quitar el fondo cuadriculado si es claro */
+            /* Solución al recuadro si la imagen tiene fondo claro */
             mix-blend-mode: multiply; 
-            opacity: 0.8; /* Un poco transparente para integrarlo mejor */
+            opacity: 0.8; /* Integración mejorada */
             
-            pointer-events: none; /* Que no interrumpa los clics */
+            pointer-events: none; /* Que no interrumpa clics */
         }
 
         /* Animación de despegue (hacia la derecha y arriba) */
@@ -124,7 +124,7 @@
 
         header { 
             position: relative;
-            /* Mantenemos fondo.jpeg original aquí o fondosinnd si prefieres */
+            /* Aquí seguimos usando fondosinnd.jpeg, o la imagen que prefieras */
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
                         url('fondosinnd.jpeg') no-repeat center center/cover;
             color: var(--white); 
